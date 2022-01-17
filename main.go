@@ -1,9 +1,12 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"os"
 	"time"
+
+	"github.com/spacejunkrpg/character"
 )
 
 func main() {
@@ -25,6 +28,9 @@ func main() {
 			seed = *charSeed
 		}
 
-		characters.GenerateCharacter(seed)
+		c := character.GenerateCharacter(seed)
+		j, _ := json.Marshal(c)
+		println(string(j))
+
 	}
 }
